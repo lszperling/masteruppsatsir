@@ -1,0 +1,8 @@
+library(ggplot2)
+library(dplyr)
+dataset <- read.csv("../finalStats.csv")
+dataset$Yes <- as.numeric(dataset$Yes)
+dataset$No <- as.numeric(dataset$No)
+dataset$Abstention <- as.numeric(dataset$Abstention)
+dataset <- mutate(dataset, sum = Yes + No + Abstention)
+dataset <- mutate(dataset, porcYes = Yes/sum * 100)
