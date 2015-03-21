@@ -1,8 +1,9 @@
 library(tools)
-file_list <- list.files()
+directory <- "stats"
+file_list <- list.files(directory)
 rm(dataset)
 for (file in file_list){
-    
+    file <- paste(directory,"/", file, sep = "")
     # if the merged dataset does exist, append to it
     if (exists("dataset")){
         temp_dataset <-read.csv(file, header=TRUE)
@@ -20,4 +21,4 @@ for (file in file_list){
     
 }
 dataset <- dataset[!is.na(dataset$Name),]
-write.csv(dataset, "../finalStats.csv", row.names = FALSE, col.names = FALSE, quote = FALSE)
+write.csv(dataset, "finalStats.csv", row.names = FALSE, col.names = FALSE, quote = FALSE)
